@@ -31,6 +31,7 @@ func _physics_process(delta):
 		
 	motion.y += gravity
 	
+	
 	# check the tile names inside the tilemap "Ladder"
 	is_under_ladder  = get_tile_on_position(position.x, position.y - 16) == "LadderPiece"
 	is_on_ladder  = get_tile_on_position(position.x, position.y) == "LadderPiece"
@@ -146,7 +147,7 @@ func get_input():
 		change_state(IDLE)
 		
 	# transition to idle state
-	if !is_on_ladder:
+	if !is_on_ladder and state in [IDLE_ON_LADDER, CLIMB_DOWN, CLIMB_UP]:
 		change_state(IDLE)
 		
 		
